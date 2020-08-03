@@ -1,0 +1,93 @@
+@mixin link-animate {
+  position: relative;
+  overflow: hidden;
+  width: 225px;
+  display: inline-block;
+  padding: 15px 0;
+  background: #53d0fb;
+  font-family: "MyriadPro";
+  text-decoration: none;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  transition: color 0.3s;
+  z-index: 1;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    bottom: 100%;
+    left: 0;
+    z-index: -1;
+    transition: transform 0.3s;
+    transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+  }
+
+  &::before {
+    background: #6d6d6d;
+  }
+
+  &::after {
+    background: #000;
+  }
+
+  &:hover {
+    color: #fff;
+
+    &::before,
+    &::after {
+      transform: translate3d(0, 100%, 0);
+    }
+
+    &::after {
+      transition-delay: 0.175s;
+    }
+  }
+}
+@keyframes animate {
+  0% {
+    width: 0;
+    height: 0;
+    border-top-color: #53d0fb;
+  }
+  50%{
+    width: 100%;
+    height: 0;
+    border-top-color: #53d0fb;
+    border-right-color: #53d0fb;
+  }
+  100%{
+    width: 100%;
+    height: 100%;
+    border-top-color: #53d0fb;
+    border-right-color: #53d0fb;
+  }
+}
+
+@keyframes animate2 {
+  0% {
+    width: 0;
+    height: 0;
+    border-left-color: #53d0fb;
+  }
+  50%{
+    width: 0;
+    height: 100%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: #53d0fb;
+    border-bottom-color: #53d0fb;
+  }
+  100%{
+    width: 100%;
+    height: 100%;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: #53d0fb;
+    border-bottom-color: #53d0fb;
+  }
+}
